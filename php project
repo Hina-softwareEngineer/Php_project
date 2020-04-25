@@ -1,0 +1,41 @@
+Frontend
+
+1- landing page + having buttons to go to sign up and login design
+2- sign up page design
+3- Make a sql database for connection with fields name
+4- save sign up data into database
+5- login page design
+6- logged in by confirming user email and password
+7- header,profile page show after logged in page
+
+
+Profile page building
+
+1- cover photo set and update
+2- profile picture set and update
+3- working on profile about section and logout
+
+Home page
+
+1- on home page, to make a post
+
+
+Desgin home page
+
+making request routes
+show posts of all
+users profile page, user posts show
+style profile page
+delete and edit post button
+view post button and working
+complete comment and view post functionality
+work on find frientd
+work on user profile after finding a friend
+completing user profile
+work on message button
+
+design edit profile page
+backend of edit profile page
+working on my posts page
+Search for posts
+Forgot password functionality
