@@ -44,6 +44,53 @@ include('includes/connection.php');
                 $run_posts = mysqli_query($con, $user_posts);
                 $posts = mysqli_num_rows(($run_posts));
             ?>
+            <li><a href='profile.php?<?php echo "u_id=$user_id" ?>'>
+        <?php echo"$first_name"; ?></a></li>
+        <li><a href="home.php">Home</a></li>
+        <li><a href="home.php">Find People</a></li>
+        <li><a href="messages.php?u_id=new">Messages</a></li>
+        <?php 
+            echo "
+            <li><a href='#'>
+            <span>Down</span></a>
+            <ul>
+                <li>
+                    <a href='my_post.php?u_id=$user_id'>My Posts
+                    <span>$posts</span></a>
+                </li>
+
+                <li>
+                    <a href='my_post.php?u_id=$user_id'>My Posts
+                    <span>$posts</span></a>
+                </li>
+
+                <li>
+                    <a href='edit_profile.php?u_id=$user_id'>Edit Account
+                    </a>
+                </li>
+
+                <li>Separator</li>
+
+                <li>
+                    <a href='logout.php'>Logout
+                    </a>
+                </li>
+            </ul>
+            </li>
+            ";
+        ?>
+
+        </ul>
+
+        <ul>
+            <li>
+                <form action="results.php">
+                    <div>
+                        <input type="text" name="user_query" placeholder="Search">
+                    </div>
+                    <button type="submit" name="search">Search</button>
+                </form>
+            </li>
         </ul>
         </div>
     </div>
