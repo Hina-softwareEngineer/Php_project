@@ -7,12 +7,12 @@ include('includes/connection.php');
 <nav>
     <div>
         <div>
-        <button></button>
+        <button>
         <span>Toggle Navigation</span>
         <span></span>
         <span></span>
         <span></span>
-
+        </button>
         <a href="home.php">Everyone FriendsBook</a>
         </div>
         <div>
@@ -47,7 +47,7 @@ include('includes/connection.php');
             <li><a href='profile.php?<?php echo "u_id=$user_id" ?>'>
         <?php echo"$first_name"; ?></a></li>
         <li><a href="home.php">Home</a></li>
-        <li><a href="home.php">Find People</a></li>
+        <li><a href="members.php">Find People</a></li>
         <li><a href="messages.php?u_id=new">Messages</a></li>
         <?php 
             echo "
@@ -55,8 +55,7 @@ include('includes/connection.php');
             <span>Down</span></a>
             <ul>
                 <li>
-                    <a href='my_post.php?u_id=$user_id'>My Posts
-                    <span>$posts</span></a>
+                    <a href='#'><span><i class='glyphicon glyphicon-chevron-down'></i></span></a>
                 </li>
 
                 <li>
@@ -69,7 +68,7 @@ include('includes/connection.php');
                     </a>
                 </li>
 
-                <li>Separator</li>
+                <li role='separator'>Separator</li>
 
                 <li>
                     <a href='logout.php'>Logout
