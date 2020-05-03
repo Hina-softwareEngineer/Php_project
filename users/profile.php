@@ -130,5 +130,25 @@
         </div>
 
     </div>
+
+    <div>
+        <div>
+        </div>
+
+        <div>
+            <?php 
+                echo"
+                <center><h2><strong></strong></h2></center>
+                <center><h4><strong>$first_name $last_name</strong></h4></center>
+                <p><strong><i>$describe_user</i></strong></p>
+                <p><strong>Relationship Status: </strong> $Relationship_status</p>
+                <p><strong>Lives In : </strong> $user_country</p>
+                <p><strong>Member Since: </strong> $register_date</p>
+                <p><strong>Gender: </strong> $user_gender</p>
+                <p><strong>Date Of Birth: </strong> $user_birthday</p>
+                ";
+            ?>
+        </div>
+    </div>
 </body>
 </html>
