@@ -12,6 +12,7 @@ $name= $_POST['name_entered'];
 $submitbutton= $_POST['submitbutton'];
 
 if ($submitbutton){
+echo "<script>alert('hellow')</script>";
 if (!empty($name)) {
 echo 'The name you entered is ' . $name;
 }
