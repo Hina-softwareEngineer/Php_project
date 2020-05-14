@@ -7,7 +7,7 @@
 </head>
 <body>
 <?php
- include('server.php');
+ include('../includes/server.php');
   if (count($errors) > 0) :?>
   
   <div class="error">

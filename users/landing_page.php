@@ -15,7 +15,7 @@
 <p>A platform where you can connect with your friends and family!!!</p>
 <br><br><br>
 <p>Want to create a new account!!! please sign up.</p>
-<button name="sign_up" ><a href="signup.php">Sign Up</a></button>
+<button name="sign_up" ><a href="../functions/signup.php">Sign Up</a></button>
 <p>Have an existing acount.</p>
 <button name="log_in" ><a href="login.php">log In</a></button>
 </div>    

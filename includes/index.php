@@ -3,12 +3,12 @@
 
   if (!isset($_SESSION['email'])) {
   	$_SESSION['msg'] = "You must log in first";
-  	header('location: login.php');
+  	header('location: ../users/login.php');
   }
   if (isset($_GET['logout'])) {
   	session_destroy();
   	unset($_SESSION['email']);
-  	header("location: login.php");
+  	header("location: ../users/login.php");
   }
 ?>
 <!DOCTYPE html>
@@ -40,9 +40,9 @@
 		<p>Welcome <strong><?php
 			 echo $_SESSION['username'] ;
 			  ?></strong></p>
-    	<p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
+    	<p> <a href="../users/home.php" style="color: red;">HOME</a> </p>
     <?php endif ?>
 </div>
-<?php include('errors.php'); ?>	
+<?php include('../includes/errors.php'); ?>	
 </body>
 </html>
