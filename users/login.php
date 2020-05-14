@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>log in.......</h1>
-    <?php include('server.php') ?>
+    <?php include('../includes/server.php') ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +20,7 @@
   </div>
 	 
   <form method="post" action="login.php">
-  	<?php include('errors.php'); ?>
+  	<?php include('../includes/errors.php'); ?>
   	<div class="input-group">
   		<label>Email: </label>
   		<input type="text" name="email" >
@@ -33,7 +33,7 @@
   		<button type="submit" class="btn" name="login_user">Login</button>
   	</div>
   	<p>
-  		Not yet a member? <a href="signup.php">Sign up</a>
+  		Not yet a member? <a href="../functions/signup.php">Sign up</a>
   	</p>
   </form>
 </body>

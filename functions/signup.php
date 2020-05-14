@@ -11,8 +11,8 @@
   </div>
 	
   <form method="post" action="signup.php">
-  <?php include('server.php');
-  include('errors.php');
+  <?php include('../includes/server.php');
+  include('../includes/errors.php');
    ?>
   	<div class="input-group">
   	  <label>Firstname: </label>
@@ -47,7 +47,7 @@
   	  <button type="submit" class="btn" name="reg_user">Sign Up</button>
   	</div>
   	<p>
-  		Already a member? <a href="login.php">Sign in</a>
+  		Already a member? <a href="../users/login.php">Log in</a>
   	</p>
   </form>
 </body>
