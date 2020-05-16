@@ -3,6 +3,7 @@
 session_start();
 include('../includes/header.php');
 
+
 if (!isset($_SESSION['user_email'])) {
     header('location:../includes/index.php');
 }
@@ -61,3 +62,6 @@ if (!isset($_SESSION['user_email'])) {
 </body>
 
 </html>
+
+
+<!-- <Hina /> -->

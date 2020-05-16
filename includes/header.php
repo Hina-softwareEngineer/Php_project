@@ -95,3 +95,5 @@ include('../functions/functions.php');
         </div>
     </div>
 </nav>
+
+<!-- < Hina /> -->

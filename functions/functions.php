@@ -3,14 +3,15 @@
 $con = mysqli_connect("localhost", "root", "", "social_network");
 
 // function
-
+// <Hina />
 function insertPost()
 {
+    echo "1";
     if (isset($_POST['sub'])) {
         global $con;
         global $user_id;
 
-
+        echo "2";
         $content = htmlentities($_POST['content']);
         $upload_image = $_FILES['upload_image']['name'];
         $image_tmp = $_FILES['upload_image']['tmp_name'];
@@ -21,18 +22,20 @@ function insertPost()
             echo "<script>window.open('home.php', '_self')</script>";
         } else {
             if (strlen($upload_image) >= 1 && strlen($content) >= 1) {
-                move_uploaded_file($image_tmp, "../imagepost/$upload_image.$random_number");
-                $insert = "insert into posts (user_id, post_content, upload_image, post_date) values('$user_id', '$content', '$upload_image.$random_number', NOW())";
+                if (move_uploaded_file($image_tmp, "../imagepost/$upload_image.$random_number")) {
+                    $insert = "insert into posts (user_id, post_content, upload_image, post_date) values('$user_id', '$content', '$upload_image.$random_number', NOW())";
 
-                $run = mysqli_query($con, $insert);
+                    $run = mysqli_query($con, $insert);
 
-                if ($run) {
-                    echo "<script>alert('Your Post update a moment ago!')</script>";
-                    echo "<script>window.open('home.php', '_self')</script>";
+                    if ($run) {
+                        echo "<script>alert('Your Post update a moment ago!')</script>";
+                        echo "<script>window.open('home.php', '_self')</script>";
 
-                    $update = "update users set posts='yes' where user_id ='$user_id' ";
-                    $run_update = mysqli_query($con, $update);
+                        $update = "update users set posts='yes' where user_id ='$user_id' ";
+                        $run_update = mysqli_query($con, $update);
+                    }
                 }
+
                 exit();
             } else {
                 if ($upload_image == '' && $content == '') {
@@ -40,70 +43,82 @@ function insertPost()
                     echo "<script>window.open('home.php', '_self')</script>";
                 } else {
                     if ($content == '') {
-                        move_uploaded_file($image_tmp, "imagepost/$upload_image.$random_number");
-                        $insert = "insert into posts (user_id, post_content, upload_image, post_date) values('$user_id', 'No', '$upload_image.$random_number', NOW())";
+                        if (move_uploaded_file($image_tmp, "../imagepost/$upload_image.$random_number")) {
+                            $insert = "insert into posts (user_id, post_content, upload_image, post_date) values('$user_id', 'No', '$upload_image.$random_number', NOW())";
 
-                        $run = mysqli_query($con, $insert);
+                            $run = mysqli_query($con, $insert);
 
-                        if ($run) {
-                            echo "<script>alert('Your Post update a moment ago!')</script>";
-                            echo "<script>window.open('home.php', '_self')</script>";
+                            if ($run) {
+                                echo "<script>alert('Your Post update a moment ago!')</script>";
+                                echo "<script>window.open('home.php', '_self')</script>";
 
-                            $update = "update users set posts='yes' where user_id ='$user_id' ";
-                            $run_update = mysqli_query($con, $update);
+                                $update = "update users set posts='yes' where user_id ='$user_id' ";
+                                $run_update = mysqli_query($con, $update);
+                            }
                         }
+
                         exit();
                     } else {
+                        echo "3";
                         $insert = "insert into posts (user_id, post_content, post_date) values('$user_id', '$content', NOW())";
 
                         $run = mysqli_query($con, $insert);
+                        echo "$run, 'hello'";
+                        if (!$run) {
+                            echo "Error: " . mysqli_error($con);
+                        }
 
                         if ($run) {
-                            echo "<script>alert('Your Post update a moment ago!')</script>";
-                            echo "<script>window.open('home.php', '_self')</script>";
-
+                            // echo "<script>alert('Your Post update a moment ago!')</script>";
+                            // echo "<script>window.open('home.php', '_self')</script>";
+                            echo "your post update a moment ago";
                             $update = "update users set posts='yes' where user_id ='$user_id' ";
                             $run_update = mysqli_query($con, $update);
+                            echo "inserted";
+                            echo "$run_update";
                         }
                     }
                 }
             }
         }
     }
-    // <Vazeema>
-    function get_posts()
-    {
-        global $con;
-        $per_page = 4;
+}
 
-        if (isset($_GET['page'])) {
-            $page = $_GET['page'];
-        } else {
-            $page = 1;
-        }
+// <Hina />
+// <Vazeema>
+function get_posts()
+{
+    global $con;
+    $per_page = 4;
 
-        $start_from = ($page - 1) * $per_page;
-        $get_posts = "select * from posts ORDER by 1 DESC LIMIT $start_from, $per_page";
-        $run_posts = mysqli_query($con, $get_posts);
+    if (isset($_GET['page'])) {
+        $page = $_GET['page'];
+    } else {
+        $page = 1;
+    }
 
-        while ($row_posts = mysqli_fetch_array($run_posts)) {
-            $post_id = $row_posts['post_id'];
-            $user_id = $row_posts['user_id'];
-            $content = substr($row_posts['post_content'], 0, 40);
-            $upload_image = $row_posts['upload_image'];
-            $post_date = $row_posts['post_date'];
+    $start_from = ($page - 1) * $per_page;
+    $get_posts = "select * from posts ORDER by 1 DESC LIMIT $start_from, $per_page";
+    $run_posts = mysqli_query($con, $get_posts);
 
-            $user = "select * from users where user_id='$user_id' AND posts='yes'";
-            $run_user = mysqli_query($con, $user);
-            $row_user = mysqli_fetch_array($run_user);
+    while ($row_posts = mysqli_fetch_array($run_posts)) {
+        $post_id = $row_posts['post_id'];
+        $user_id = $row_posts['user_id'];
+        $content = substr($row_posts['post_content'], 0, 40);
+        $upload_image = $row_posts['upload_image'];
+        $post_date = $row_posts['post_date'];
 
-            $user_name = $row_user['user_name'];
-            $user_image = $row_user['user_image'];
+        $user = "select * from users where user_id='$user_id' AND posts='yes'";
+        $run_user = mysqli_query($con, $user);
+        $row_user = mysqli_fetch_array($run_user);
 
-            //displaying posts from database 
+        $user_name = $row_user['username'];
+        $user_image = $row_user['user_image'];
 
-            if ($content == "No" && strlen($upload_image) >= 1) {
-                echo "
+        //displaying posts from database 
+
+        if ($content == "No" && strlen($upload_image) >= 1) {
+            echo "
             <div class='row>
                 <div class='col-sm-3'>
                 </div>
@@ -111,7 +126,7 @@ function insertPost()
                 <div id='posts' class='col-sm-6'>
                     <div class='row'>
                         <div class='col-sm-2'>
-                            <p><img src='users/$user_image' class='img-circle' width='100px' height='100px'></p>
+                            <p><img src='images/$user_image' class='img-circle' width='100px' height='100px'></p>
                         </div>
                         <div class='col-sm-6'>
                             <h3><a style='text-decoration:none; cursor:pointer; color:#3897f0;' href='user_profile.php?u_id=$user_id'>$user_name</h3>
@@ -132,8 +147,8 @@ function insertPost()
                 </div>
 			</div><br><br>
             ";
-            } else if (strlen($content) >= 1 && strlen($upload_image) >= 1) {
-                echo "
+        } else if (strlen($content) >= 1 && strlen($upload_image) >= 1) {
+            echo "
             <div class='row>
                 <div class='col-sm-3'>
                 </div>
@@ -141,7 +156,7 @@ function insertPost()
                 <div id='posts' class='col-sm-6'>
                     <div class='row'>
                         <div class='col-sm-2'>
-                            <p><img src='users/$user_image' class='img-circle' width='100px' height='100px'></p>
+                            <p><img src='images/$user_image' class='img-circle' width='100px' height='100px'></p>
                         </div>
                         <div class='col-sm-6'>
                             <h3><a style='text-decoration:none; cursor:pointer; color:#3897f0;' href='user_profile.php?u_id=$user_id'>$user_name</h3>
@@ -163,8 +178,8 @@ function insertPost()
                 </div>
 			</div><br><br>
             ";
-            } else {
-                echo "
+        } else {
+            echo "
             <div class='row>
                 <div class='col-sm-3'>
                 </div>
@@ -172,7 +187,7 @@ function insertPost()
                 <div id='posts' class='col-sm-6'>
                     <div class='row'>
                         <div class='col-sm-2'>
-                            <p><img src='users/$user_image' class='img-circle' width='100px' height='100px'></p>
+                            <p><img src='images/$user_image' class='img-circle' width='100px' height='100px'></p>
                         </div>
                         <div class='col-sm-6'>
                             <h3><a style='text-decoration:none; cursor:pointer; color:#3897f0;' href='user_profile.php?u_id=$user_id'>$user_name</h3>
@@ -193,10 +208,10 @@ function insertPost()
                 </div>
 			</div><br><br>
             ";
-            }
         }
-
-        include("../functions/pagination.php");
     }
+
+    include("../functions/pagination.php");
 }
+
 // </Vazeema>
