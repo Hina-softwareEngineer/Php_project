@@ -25,7 +25,7 @@ include('../functions/functions.php');
                 $row = mysqli_fetch_array($run_user);
 
                 $user_id = $row['user_id'];
-                $user_name = $row['user_name'];
+                $user_name = $row['username'];
                 $first_name = $row['f_name'];
                 $last_name = $row['l_name'];
                 $describe_user = $row['describe_user'];
@@ -34,7 +34,7 @@ include('../functions/functions.php');
                 $user_email = $row['user_email'];
                 $user_country = $row['user_country'];
                 $user_gender = $row['user_gender'];
-                $user_birthday = $row['user_birhtday'];
+                $user_birthday = $row['user_birthday'];
                 $user_image = $row['user_image'];
                 $user_cover = $row['user_cover'];
                 $recovery_account = $row['recovery_account'];
@@ -46,7 +46,7 @@ include('../functions/functions.php');
                 $posts = mysqli_num_rows(($run_posts));
                 ?>
                 <li><a href='profile.php?<?php echo "u_id=$user_id" ?>'>
-                        <?php echo "$first_name"; ?></a></li>
+                        <?php echo "$first_name"; ?>Profile</a></li>
                 <li><a href="home.php">Home</a></li>
                 <li><a href="members.php">Find People</a></li>
                 <li><a href="messages.php?u_id=new">Messages</a></li>

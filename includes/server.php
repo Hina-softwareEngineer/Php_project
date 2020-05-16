@@ -69,7 +69,7 @@ if (isset($_POST['reg_user'])) {
     // $result = mysqli_query($db, $query);
 
     $_SESSION['result'] = $result;
-    $_SESSION['email'] = $email;
+    $_SESSION['user_email'] = $email;
     $_SESSION['username'] = $username;
     $_SESSION['success'] = "You are now logged in";
     // header('location: ../includes/index.php');
@@ -100,7 +100,7 @@ if (isset($_POST['login_user'])) {
     $results = mysqli_query($db, $query);
     $row = mysqli_fetch_assoc($results);
     if (mysqli_num_rows($results) == 1) {
-      $_SESSION['email'] = $email;
+      $_SESSION['user_email'] = $email;
       $_SESSION['username'] = $row['f_name'] . ' ' . $row['l_name'];
       $_SESSION['success'] = "You are now logged in";
       header('location: ../includes/index.php');
