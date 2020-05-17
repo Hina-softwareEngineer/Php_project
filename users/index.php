@@ -1,2 +1,2 @@
 <?php
-    include("./landing_page.php");
+include("./landing_page.php");

@@ -6,12 +6,12 @@ $con = mysqli_connect("localhost", "root", "", "social_network");
 // <Hina />
 function insertPost()
 {
-    echo "1";
+
     if (isset($_POST['sub'])) {
         global $con;
         global $user_id;
 
-        echo "2";
+
         $content = htmlentities($_POST['content']);
         $upload_image = $_FILES['upload_image']['name'];
         $image_tmp = $_FILES['upload_image']['tmp_name'];
@@ -22,6 +22,7 @@ function insertPost()
             echo "<script>window.open('home.php', '_self')</script>";
         } else {
             if (strlen($upload_image) >= 1 && strlen($content) >= 1) {
+
                 if (move_uploaded_file($image_tmp, "../imagepost/$upload_image.$random_number")) {
                     $insert = "insert into posts (user_id, post_content, upload_image, post_date) values('$user_id', '$content', '$upload_image.$random_number', NOW())";
 
@@ -43,6 +44,7 @@ function insertPost()
                     echo "<script>window.open('home.php', '_self')</script>";
                 } else {
                     if ($content == '') {
+
                         if (move_uploaded_file($image_tmp, "../imagepost/$upload_image.$random_number")) {
                             $insert = "insert into posts (user_id, post_content, upload_image, post_date) values('$user_id', 'No', '$upload_image.$random_number', NOW())";
 
@@ -59,7 +61,7 @@ function insertPost()
 
                         exit();
                     } else {
-                        echo "3";
+
                         $insert = "insert into posts (user_id, post_content, post_date) values('$user_id', '$content', NOW())";
 
                         $run = mysqli_query($con, $insert);
@@ -69,9 +71,9 @@ function insertPost()
                         }
 
                         if ($run) {
-                            // echo "<script>alert('Your Post update a moment ago!')</script>";
-                            // echo "<script>window.open('home.php', '_self')</script>";
-                            echo "your post update a moment ago";
+                            echo "<script>alert('Your Post update a moment ago!')</script>";
+                            echo "<script>window.open('home.php', '_self')</script>";
+
                             $update = "update users set posts='yes' where user_id ='$user_id' ";
                             $run_update = mysqli_query($con, $update);
                             echo "inserted";
@@ -137,7 +139,7 @@ function get_posts()
                     </div>
                     <div class='row'>
                         <div class='col-sm-12'>
-                            <img id='posts-img' src='imagepost/$upload_image' style='height:350px;'>
+                            <img id='posts-img' src='../imagepost/$upload_image' style='height:350px;'>
                         </div>
                     </div><br>
                     <a href='single.php?post_id=$post_id' style='float:right;'><button class='btn btn-info'>Comment</button></a><br>
@@ -168,7 +170,7 @@ function get_posts()
                     <div class='row'>
                         <div class='col-sm-12'>
                             <p>$content</p>
-                            <img id='posts-img' src='imagepost/$upload_image' style='height:350px;'>
+                            <img id='posts-img' src='../imagepost/$upload_image' style='height:350px;'>
                         </div>
                     </div><br>
                     <a href='single.php?post_id=$post_id' style='float:right;'><button class='btn btn-info'>Comment</button></a><br>

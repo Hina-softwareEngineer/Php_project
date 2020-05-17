@@ -50,7 +50,7 @@ if (!isset($_SESSION['user_email'])) {
             echo "
                     <div>
                         <div><img id='cover-img' src='cover/$user_cover' alt='cover'></div>
-                        <h1>$user_cover</h1>
+                        
                         <form action='profile.php?u_id=$user_id' method='post' enctype='multipart/form-data' >
                             <ul style='position : absolute; top:10px; left:100px;'>
                                 <li>
@@ -199,7 +199,7 @@ if (!isset($_SESSION['user_email'])) {
                 $run_user = mysqli_query($con, $user);
                 $row_user = mysqli_fetch_array($run_user);
 
-                $user_name = $row_user['user_name'];
+                $user_name = $row_user['username'];
                 $user_image = $row_user['user_image'];
 
                 // now diplaying the posts
@@ -209,7 +209,7 @@ if (!isset($_SESSION['user_email'])) {
                     <div id='own_posts'>
                         <div class='row'>
                             <div class='col-sm-2'>
-                                <p><img src='users/$user_image' class='img-circle' width='100px' height='100px'></p>
+                                <p><img src='images/$user_image' class='img-circle' width='100px' height='100px'></p>
                             </div>
                             <div class='col-sm-6'>
                                 <h3><a style='text-decoration:none; cursor:pointer; color:#3897f0;' href='user_profile.php?u_id=$user_id'>$user_name</h3>
@@ -220,7 +220,7 @@ if (!isset($_SESSION['user_email'])) {
                         </div>
                         <div class='row'>
                             <div class='col-sm-12'>
-                                <img id='posts-img' src='imagepost/$upload_image' style='height:350px;'>
+                                <img id='posts-img' src='../imagepost/$upload_image' style='height:350px;'>
                             </div>
                         </div><br>
                         <a href='single.php?post_id=$post_id' style='float:right;'><button class='btn btn-success'>View</button></a>
@@ -232,7 +232,7 @@ if (!isset($_SESSION['user_email'])) {
                     <div id='own_posts'>
                         <div class='row'>
                             <div class='col-sm-2'>
-                                <p><img src='users/$user_image' class='img-circle' width='100px' height='100px'></p>
+                                <p><img src='images/$user_image' class='img-circle' width='100px' height='100px'></p>
                             </div>
                             <div class='col-sm-6'>
                                 <h3><a style='text-decoration:none; cursor:pointer; color:#3897f0;' href='user_profile.php?u_id=$user_id'>$user_name</h3>
@@ -244,7 +244,7 @@ if (!isset($_SESSION['user_email'])) {
                         <div class='row'>
                             <div class='col-sm-12'>
                                 <p>$content</p>
-                                <img id='posts-img' src='imagepost/$upload_image' style='height:350px;'>
+                                <img id='posts-img' src='../imagepost/$upload_image' style='height:350px;'>
                             </div>
                         </div><br>
                         <a href='single.php?post_id=$post_id' style='float:right;'><button class='btn btn-success'>View</button></a>
@@ -256,7 +256,7 @@ if (!isset($_SESSION['user_email'])) {
                     <div id='own_posts'>
                         <div class='row'>
                             <div class='col-sm-2'>
-                                <p><img src='users/$user_image' class='img-circle' width='100px' height='100px'></p>
+                                <p><img src='images/$user_image' class='img-circle' width='100px' height='100px'></p>
                             </div>
                             <div class='col-sm-6'>
                                 <h3><a style='text-decoration:none; cursor:pointer; color:#3897f0;' href='user_profile.php?u_id=$user_id'>$user_name</h3>
@@ -281,7 +281,7 @@ if (!isset($_SESSION['user_email'])) {
                         $u_id = $_GET['u_id'];
                     }
 
-                    $get_posts = "select user email from users where user_id='$u_id'";
+                    $get_posts = "select user_email from users where user_id='$u_id'";
                     $run_user = mysqli_query($con, $get_posts);
                     $row = mysqli_fetch_array($run_user);
 
@@ -309,7 +309,7 @@ if (!isset($_SESSION['user_email'])) {
                     }
                 }
 
-                include("functions/delete_post.php");
+                include("../functions/delete_post.php");
             }
             ?>
         </div>

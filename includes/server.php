@@ -12,10 +12,7 @@ $errors = array();
 $username = $firstname . ' ' . $lastname;
 // connect to the database
 $db = mysqli_connect('localhost', 'root', '', 'social_network');
-if (!$db) {
-  die("Connection failed: " . $db->connect_error);
-}
-echo "Connected successfully";
+
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
   // receive all input values from the form
@@ -66,18 +63,13 @@ if (isset($_POST['reg_user'])) {
 
     $query = "INSERT INTO users (username, user_email, user_pass , f_name, l_name,user_gender) 
   			  VALUES('$username', '$email', '$password' ,'$firstname',' $lastname','$gender')";
-    // $result = mysqli_query($db, $query);
+    $result = mysqli_query($db, $query);
 
     $_SESSION['result'] = $result;
     $_SESSION['user_email'] = $email;
     $_SESSION['username'] = $username;
     $_SESSION['success'] = "You are now logged in";
-    // header('location: ../includes/index.php');
-    if (mysqli_query($db, $query)) {
-      echo "Records inserted successfully.";
-    } else {
-      echo "ERROR: Could not able to execute $query. " . mysqli_error($db);
-    }
+    header('location: ../includes/index.php');
   }
 }
 if (isset($_POST['login_user'])) {
