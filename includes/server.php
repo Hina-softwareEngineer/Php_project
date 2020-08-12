@@ -11,7 +11,7 @@ $gender = "";
 $errors = array();
 $username = $firstname . ' ' . $lastname;
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'social_network');
+$db = mysqli_connect('localhost', 'root', 'root', 'social_network');
 
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
