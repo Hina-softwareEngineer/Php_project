@@ -30,11 +30,11 @@ Fields :
 
 Name  -----------------Type
 
-1- post_id------------Int(11)----------------------Primary Key
-2- user_id -----------Int(11)
-3- post-content------Varchar(255)
-4- upload_image----Varchar(255)------------Default : Null
-5- post_date---------TimeStamp---------------Default(Current TimeStamp)
+1. post_id------------Int(11)----------------------Primary Key
+2. user_id -----------Int(11)
+3. post-content------Varchar(255)
+4. upload_image----Varchar(255)------------Default : Null
+5. post_date---------TimeStamp---------------Default(Current TimeStamp)
 
 
 ![Image of Posts Table](images/posts_table.png)
