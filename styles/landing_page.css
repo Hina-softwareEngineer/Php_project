@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+body {
+  background-image: url("../images/main.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  margin: 0;
+  padding: 20px 50px;
+  font-family: "Source Sans Pro", sans-serif;
+  letter-spacing: 1.1px;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0%;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+.title_image {
+  display: flex;
+  align-items: center;
+}
+
+.title_image > h2 {
+  font-size: 2em;
+  color: white;
+  font-family: "Pacifico", cursive;
+  font-weight: 100;
+  text-shadow: 2px 2px 4px grey;
+  transform: scale(1.1) rotate(-10deg) translate(10px, -10px);
+}
+
+.container {
+  margin: 40px 80px;
+  color: white;
+}
+
+.container > h1 {
+  font-size: 3.8em;
+  margin: 10px 0;
+  letter-spacing: 2px;
+  margin-top: 80px;
+}
+
+.para {
+  max-width: 600px;
+  font-size: 32px !important;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+.container > p {
+  margin: 2px 0;
+  margin-top: 15px;
+  font-size: 20px;
+}
+
+button {
+  margin: 10px 0;
+  padding: 15px 0;
+  width: 300px;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+button {
+  background-color: #f06292;
+}
+
+button:last-child {
+  background-color: #ba68c8;
+}

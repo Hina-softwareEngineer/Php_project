@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+body {
+  background-image: url("../images/friend.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: -25%;
+  left: -13%;
+  width: 112vw;
+  height: 100vh;
+  background-color: hotpink;
+  z-index: -1;
+  opacity: 0.4;
+}
+
+.login {
+  max-width: 350px;
+  margin: 10px auto;
+  margin-top: 120px;
+  padding: 30px 50px;
+  background-color: rgba(245, 245, 245, 0.8);
+  border-radius: 8px;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.header {
+  position: relative;
+  text-align: center;
+}
+
+.header > div {
+  position: absolute;
+  top: -130px;
+  left: 33%;
+  background-color: #f37f9a;
+  padding: 30px;
+  border-radius: 50%;
+  border: 2px solid #e65b7c;
+}
+
+.fa {
+  font-size: 4em;
+  color: #fff;
+}
+
+.header > h2 {
+  padding: 40px 0;
+  padding-bottom: 10px;
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+.input-group {
+  position: relative;
+}
+
+input {
+  width: -webkit-fill-available;
+  padding: 10px 40px;
+  padding-left: 45px;
+  font-size: 18px;
+  font-family: "Source Sans Pro", sans-serif;
+  margin: 20px 0;
+  border: none;
+  border-bottom: 3px solid #c39bd3;
+  position: relative;
+  background: transparent;
+  color: #2c3e50;
+}
+
+.icons {
+  position: absolute;
+  top: 32px;
+  left: 10px;
+}
+
+.icons > i {
+  color: hotpink;
+  font-size: 18px;
+}
+input:focus {
+  outline: none;
+  border-color: #746cad;
+}
+
+.btn {
+  margin-top: 30px;
+  width: -webkit-fill-available;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #f33b7b;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 4px 4px 20px lightgrey;
+}
+
+.btn:hover {
+  background: #e7356a;
+}
+
+.error > p {
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: #ea1128;
+  color: white;
+  padding: 10px;
+}
+
+.member {
+  text-align: center;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: hotpink;
+  font-weight: bold;
+}
