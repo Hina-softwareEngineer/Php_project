@@ -317,6 +317,186 @@ if (!isset($_SESSION['user_email'])) {
         </div>
         <!-- </Vazeema> -->
     </div>
+
+    <!-- Laviza Falak Naz -->
+    <div class="row">
+    </div>
+    <div class="col-sm-2" style="background-color:#e6e6e6; text-align: center; left=0.8%; border-radius:5px;" >
+    <?php
+    echo "
+            <center><h2><strong>About</Strong></h2></center>
+            <center><h4><strong>$first_name $last_name>/strong></h4></center>
+            <p><strong><i style='color:grey;'>$describe_user</i><strong></p><br>
+            <p><strong>Relationshio Status: </strong> $Relationshio_status</p><br>
+            <p><strong>Lives in: </strong><$user_country</p><br>
+            <p><strong>Member Since: </strong><$register_date</p><br>
+            <p><strong>Gender: </strong><$user_gender</p><br>
+            <p><strong>Date of Birth: </strong><$user_birthday</p><br>
+        ";
+        ?>
+    </div>
+    <div class="col-sm-6">
+    
+        <!-- DIAPLAY USER POSTS-->
+
+        <?php
+        global $con;
+        if(isset($_GET['u_id']))
+        {
+            $u_id=$_GET['u_id'];
+
+        }
+        $get_posts="select * from posts where user_ids='$u_id' ORDER by 1 DESC LIMIT 5";
+
+        $run_posts=mysqli_query($con, %get_posts);
+        while($row_posts=mysqli_fetch_array($run_posts))
+        {
+            
+            $post_id=$row_posts['post_id'];
+            $user_id = $row_posts['user_id'];
+            $content = $row_posts['post_content'];
+            $upload_image=$row_posts['upload_image'];
+            $post_date=$row_posts['post_date'];
+
+
+            $user = "select * from users where user_id='$user_id' AND posts='yes'";
+            $run_user = mysqli_query($con, $user);
+            $row_user = mysqli_fetch_array($run_user);
+
+            $user_name = $row_user['user_name'];
+            $user_image = $row_user['user_image'];
+
+            //NOW WE WILL DISPLAY THE POSTS
+
+            if ($content=="No" && strlen($upload_image)>=1)
+            {
+                echo"
+                    <div id='own_posts'>
+                        <div class='row>
+                            <div class='col-sm-2>
+                                <p><img src='images/$user_image' class='img-circle' width='100px' height='100px'></p>
+                            </div>
+                            <div class'col-sm-6'>
+                                <h3><a style='text-decoration:none; cursor:pointer; color:#3897f0;' href='user_profile.php?u_id=$user_id'>$user_name</h3>
+                                <h4><small style='color:black;'>Updated a post on <strong>$post_date</strong></small></h4>
+                            </div>
+                            <div class='col-sm-4'>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-sm-12'>
+                            <img id='posts-img' src='../imagepost/$upload_image' style='height:350px;'>
+                            </div>
+                        </div><br>
+                        <a href='single.php?post_id=$post_id' style='float:right;'><button class='btn btn-success'>View</button></a>
+                        <a href='functions/delete_post.php?post_id=$post_id' styles='float:right;'> <button class='btn btn-danger'>Delete</button></a>
+                    </div><br><br>
+                ";
+            }
+
+
+            else if (strlen($content)>=1 && strlen($upload_image)>=1)
+            {
+                echo"
+                    <div id='own_posts'>
+                        <div class='row>
+                            <div class='col-sm-2>
+                                <p><img src='images/$user_image' class='img-circle' width='100px' height='100px'></p>
+                            </div>
+                            <div class'col-sm-6'>
+                                <h3><a style='text-decoration:none; cursor:pointer; color:#3897f0;' href='user_profile.php?u_id=$user_id'>$user_name</h3>
+                                <h4><small style='color:black;'>Updated a post on <strong>$post_date</strong></small></h4>
+                            </div>
+                            <div class='col-sm-4'>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-sm-12'>
+                            <p>$content</p>
+                            <img id='posts-img' src='../imagepost/$upload_image' style='height:350px;'>
+                            </div>
+                        </div><br>
+                        <a href='single.php?post_id=$post_id' style='float:right;'><button class='btn btn-success'>View</button></a>
+                        <a href='functions/delete_post.php?post_id=$post_id' styles='float:right;'> <button class='btn btn-danger'>Delete</button></a>
+                    </div><br><br>
+                ";
+            }
+
+            else 
+            {
+                echo"
+                    <div id='own_posts'>
+                        <div class='row>
+                            <div class='col-sm-2>
+                                <p><img src='images/$user_image' class='img-circle' width='100px' height='100px'></p>
+                            </div>
+                            <div class'col-sm-6'>
+                                <h3><a style='text-decoration:none; cursor:pointer; color:#3897f0;' href='user_profile.php?u_id=$user_id'>$user_name</h3>
+                                <h4><small style='color:black;'>Updated a post on <strong>$post_date</strong></small></h4>
+                            </div>
+                            <div class='col-sm-4'>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-sm-2'>
+                            </div>
+                            <div class='col-sm-6'>
+                            <h3><p>$content</p></h3>
+                            </div>
+                            <div class='col-sm-4'>
+                            </div>
+                        </div>
+                ";
+
+                global #con;
+
+                if(isset($_GET['u_id']))
+                {
+                    $u_id=$_GET['u_id'];
+
+                }
+
+                $get_posts = "select user_email from users where user_id='$u_id'";
+                $run_user = mysqli_query($con,$get_posts);
+                $row  = mysqli_fetch_array($run_user);
+
+                $user_email = $row['user_email'];
+
+                $user = $_SESSION['user_email'];
+                $get_user = "select # from users where user_email = '$user'";
+                $run_user = mysqli_query($con, $get_user);
+                $row  = mysqli_fetch_array($run_user);
+
+                $user_id = $row['user_id'];
+                $u_email = $row['user_email'];
+
+                if($u_email!= $user_email)
+                {
+                    echo "<script>window.open('profile.php?u_id=$user_id','_self')</script>
+                    "
+                }
+
+                else
+                {
+                    echo "
+                      <a href='single.php?post_id=$post_id' style='float:right;'><button class='btn btn-success'>View</button></a>
+                      <a href='edit_post.php?post_id=$post_id' style='float:right;'><button class='btn btn-info'>Edit</button></a>
+                      <a href='functions/delete_post.php?post_id=$post_id' styles='float:right;'> <button class='btn btn-danger'>Delete</button></a> 
+                      </div><br><br><br>
+                    ";
+                }
+            }
+
+            include("functions/delete_post.php");
+
+
+        }
+            ?>
+    </div>
+    <div class='col-sm-2'>
+    </div>
+    </div>
+    <!--Laviza Falak Naz-->
 </body>
 
 </html>
