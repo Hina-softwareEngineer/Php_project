@@ -348,7 +348,7 @@ if (!isset($_SESSION['user_email'])) {
         }
         $get_posts="select * from posts where user_ids='$u_id' ORDER by 1 DESC LIMIT 5";
 
-        $run_posts=mysqli_query($con, %get_posts);
+        $run_posts=mysqli_query($con, $get_posts);
         while($row_posts=mysqli_fetch_array($run_posts))
         {
             
