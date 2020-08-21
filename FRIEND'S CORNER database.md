@@ -38,3 +38,13 @@ Name  -----------------Type
 
 
 ![Image of Posts Table](images/posts_table.png)
+
+## Table name : comments
+
+1. com_id ----------- Int(11)-----------primary key
+2. post_id ----------- Int (11) 
+3. post_id ----------- Int (11)
+4. user_id ----------- Int(11)
+5. comment ----------- VarChar (255)
+6. comment_author ----------- VarChar (255)
+7. date ----------- TimeStamp ----------- Default: Current_Time
