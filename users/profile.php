@@ -327,7 +327,7 @@ if (!isset($_SESSION['user_email'])) {
             <center><h2><strong>About</Strong></h2></center>
             <center><h4><strong>$first_name $last_name>/strong></h4></center>
             <p><strong><i style='color:grey;'>$describe_user</i><strong></p><br>
-            <p><strong>Relationshio Status: </strong> $Relationshio_status</p><br>
+            <p><strong>Relationship Status: </strong> $Relationshio_status</p><br>
             <p><strong>Lives in: </strong><$user_country</p><br>
             <p><strong>Member Since: </strong><$register_date</p><br>
             <p><strong>Gender: </strong><$user_gender</p><br>
@@ -346,7 +346,7 @@ if (!isset($_SESSION['user_email'])) {
             $u_id=$_GET['u_id'];
 
         }
-        $get_posts="select * from posts where user_ids='$u_id' ORDER by 1 DESC LIMIT 5";
+        $get_posts="select * from posts where user_id ='$u_id' ORDER by 1 DESC LIMIT 5";
 
         $run_posts=mysqli_query($con, $get_posts);
         while($row_posts=mysqli_fetch_array($run_posts))
@@ -473,7 +473,7 @@ if (!isset($_SESSION['user_email'])) {
                 if($u_email!= $user_email)
                 {
                     echo "<script>window.open('profile.php?u_id=$user_id','_self')</script>
-                    "
+                    ";
                 }
 
                 else
