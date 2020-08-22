@@ -215,7 +215,7 @@ function get_posts()
                     ";
                 }
                     include("../functions/pagination.php");
-            } } }
+            } 
 }
 // </Vazeema>
 
@@ -435,14 +435,14 @@ function search_user()
 {
     global $con;
 
-    if(isset($_GET['search_user_btn'))
+    if(isset($_GET['search_user_btn']))    
     {
         $search_query = htmlentities($_GET['search-user']);
         $get_user = "select * from users where f_name like '%$search_query%' OR l_name like '%$search_query%' OR user_name like '%$search_query%'";
     }
     else
     {
-        get_user = "select * from users";
+        $get_user = "select * from users";
     }
 
     $run_user = mysqli_query($con, $get_user);
