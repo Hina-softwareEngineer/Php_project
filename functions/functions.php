@@ -124,7 +124,7 @@ function get_posts()
 
                 if ($content == "No" && strlen($upload_image) >= 1) {
                     echo "
-                    <div class='row>
+                    <div class='row'>
                         <div class='col-sm-3'>
                         </div>
 
@@ -137,7 +137,7 @@ function get_posts()
                                     <h3><a style='text-decoration:none; cursor:pointer; color:#3897f0;' href='user_profile.php?u_id=$user_id'>$user_name</h3>
                                     <h4><small style='color:black;'>Updated a post on <strong>$post_date</strong></small></h4>
                                 </div>
-                                <div class='col-sm-4>
+                                <div class='col-sm-4'>
                                 </div>
                             </div>
                             <div class='row'>
@@ -154,7 +154,7 @@ function get_posts()
                     ";
                 } else if (strlen($content) >= 1 && strlen($upload_image) >= 1) {
                     echo "
-                    <div class='row>
+                    <div class='row'>
                         <div class='col-sm-3'>
                         </div>
 
@@ -167,7 +167,7 @@ function get_posts()
                                     <h3><a style='text-decoration:none; cursor:pointer; color:#3897f0;' href='user_profile.php?u_id=$user_id'>$user_name</h3>
                                     <h4><small style='color:black;'>Updated a post on <strong>$post_date</strong></small></h4>
                                 </div>
-                                <div class='col-sm-4>
+                                <div class='col-sm-4'>
                                 </div>
                             </div>
                             <div class='row'>
@@ -185,7 +185,7 @@ function get_posts()
                     ";
                 } else {
                     echo "
-                    <div class='row>
+                    <div class='row'>
                         <div class='col-sm-3'>
                         </div>
 
@@ -198,7 +198,7 @@ function get_posts()
                                     <h3><a style='text-decoration:none; cursor:pointer; color:#3897f0;' href='user_profile.php?u_id=$user_id'>$user_name</h3>
                                     <h4><small style='color:black;'>Updated a post on <strong>$post_date</strong></small></h4>
                                 </div>
-                                <div class='col-sm-4>
+                                <div class='col-sm-4'>
                                 </div>
                             </div>
                             <div class='row'>
