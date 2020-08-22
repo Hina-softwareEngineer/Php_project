@@ -467,7 +467,7 @@ function search_user()
                         <img src='users/$user_image' width='150px' height='140px' title='$username' style-' float:left; , margin:1px;'></a>
                     </di-<br><br>v>
                     <div class='col-sm-6'>
-                        <a style='text-decoration:none; cursor:pointer; color:#3897f0;' href='user_profile.phph?u_id=$user_id=$user_id'>
+                        <a style='text-decoration:none; cursor:pointer; color:#3897f0;' href='user_profile.php?u_id=$user_id=$user_id'>
                         <strong> <h2>$f_name $l_name</h2></strong>
                         </a>
                     </div>
