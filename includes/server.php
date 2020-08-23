@@ -11,8 +11,7 @@ $gender = "";
 $errors = array();
 $username = $firstname . ' ' . $lastname;
 // connect to the database
-$db = mysqli_connect('localhost', 'root', 'root', 'social_network');
-
+$db = mysqli_connect("friendscorner-mysqldbserver.mysql.database.azure.com", "hina@friendscorner-mysqldbserver", "Nedhas1webapp", "social_network");
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
   // receive all input values from the form
@@ -69,7 +68,7 @@ if (isset($_POST['reg_user'])) {
     $_SESSION['user_email'] = $email;
     $_SESSION['username'] = $username;
     $_SESSION['success'] = "You are now logged in";
-    header('location: ../includes/index.php');
+    header('location: ../users/home.php');
   }
 }
 if (isset($_POST['login_user'])) {
