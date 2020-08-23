@@ -6,3 +6,63 @@ body {
     width: 100vw;
     height: 100vh; 
 }
+#sidebar p {
+    font-size: 16px;
+}
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+    z-index: -1;
+    
+}
+.inputfile + label {
+    font-weight: 700;
+    color: white;
+    background-color: black;
+    display: inline-block;
+}
+
+.inputfile + label {
+    cursor: pointer;
+    padding: 6px 12px;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: 100;
+    background: hsla(271, 100%, 9%, 0.6);
+    border-color: hsla(271, 100%, 9%, 0.6);
+    box-shadow: 4px 4px 10px rgb(54, 23, 83);
+    font-size: 16px;
+    border-radius: 5px;
+    color: white;
+}
+.inputfile:hover + label:hover,  .inputfile:focus + label:focus{
+    background: #190030;
+}
+#cover-img{
+    min-height:400px;
+    width:100%;
+}
+#profile_img{
+    position: absolute;
+    top: 160px;
+    left: 40px;
+}
+#update_profile{
+    position: relative;
+    top: 150px;
+    cursor: pointer;
+    left: 120px;
+    transform: translate(-50%, -50%);
+}
+#own_posts {
+    border: 5px solid rgb(246, 178, 255);
+    box-shadow: 4px 4px 10px rgb(239, 119, 250);
+    padding: 40px 50px;
+}
+#post_img {
+    min-height: 300px;
+    width: 100%;
+}
