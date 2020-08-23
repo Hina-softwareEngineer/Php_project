@@ -134,7 +134,7 @@ function get_posts()
                                 </div>
                                 <div class='col-sm-6'>
                                     <h3><a style='text-decoration:none; cursor:pointer; color:rgb(44, 20, 66); font-weight:700;' href='user_profile.php?u_id=$user_id'>$user_name</h3>
-                                    <h4><small style='color:white; font-size:16;'>Updated a post on <strong>$post_date</strong></small></h4>
+                                    <h4><small style='color:white; font-size:16px;'>Updated a post on <strong>$post_date</strong></small></h4>
                                 </div>
                                 <div class='col-sm-4'>
                                 </div>
@@ -168,7 +168,7 @@ function get_posts()
                                 </div>
                                 <div class='col-sm-6'>
                                     <h3><a style='text-decoration:none; cursor:pointer; color:rgb(44, 20, 66); font-weight:700;' href='user_profile.php?u_id=$user_id'>$user_name</h3>
-                                    <h4><small style='color:white;'>Updated a post on <strong>$post_date</strong></small></h4>
+                                    <h4><small style='color:white; font-size:16px;'>Updated a post on <strong>$post_date</strong></small></h4>
                                 </div>
                                 <div class='col-sm-4'>
                                 </div>
@@ -198,7 +198,7 @@ function get_posts()
                                 </div>
                                 <div class='col-sm-6'>
                                     <h3><a style='text-decoration:none; cursor:pointer; color:rgb(44, 20, 66); font-weight:700;' href='user_profile.php?u_id=$user_id'>$user_name</h3>
-                                    <h4><small style='color:white;'>Updated a post on <strong>$post_date</strong></small></h4>
+                                    <h4><small style='color:white; font-size:16px;'>Updated a post on <strong>$post_date</strong></small></h4>
                                 </div>
                                 <div class='col-sm-4'>
                                 </div>
@@ -302,7 +302,7 @@ function single_post()
                             </div>
                             <div class='col-sm-6'>
                                 <h3><a style='text-decoration:none; cursor:pointer; color:rgb(44, 20, 66); font-weight:700;' href='user_profile.php?u_id=$user_id'>$user_name</h3>
-                                <h4><small style='color:white;'>Updated a post on <strong>$post_date</strong></small></h4>
+                                <h4><small style='color:white; font-size:16px;'>Updated a post on <strong>$post_date</strong></small></h4>
                             </div>
                             <div class='col-sm-4'>
                             </div>
@@ -333,7 +333,7 @@ function single_post()
                             </div>
                             <div class='col-sm-6'>
                                 <h3><a style='text-decoration:none; cursor:pointer; color:rgb(44, 20, 66); font-weight:700;' href='user_profile.php?u_id=$user_id'>$user_name</h3>
-                                <h4><small style='color:white;'>Updated a post on <strong>$post_date</strong></small></h4>
+                                <h4><small style='color:white; font-size:16px;'>Updated a post on <strong>$post_date</strong></small></h4>
                             </div>
                             <div class='col-sm-4'>
                             </div>
@@ -365,7 +365,7 @@ function single_post()
                             </div>
                             <div class='col-sm-6'>
                                 <h3><a style='text-decoration:none; cursor:pointer; color:rgb(44, 20, 66); font-weight:700;' href='user_profile.php?u_id=$user_id'>$user_name</h3>
-                                <h4><small style='color:white;'>Updated a post on <strong>$post_date</strong></small></h4>
+                                <h4><small style='color:white; font-size:16px;'>Updated a post on <strong>$post_date</strong></small></h4>
                             </div>
                             <div class='col-sm-4'>
                             </div>
