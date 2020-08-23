@@ -62,3 +62,48 @@ textarea {
     font-weight: 700;
     text-shadow: 4px 4px 10px rgb(44, 20, 66)
 }
+#posts {
+    border: 5px solid rgb(246, 178, 255);
+    box-shadow: 4px 4px 10px rgb(239, 119, 250);
+    padding: 40px 50px;
+}
+#posts-img {
+    padding-top:5px;
+    padding-right:10px;
+    min-width: 102%;
+    max-width: 50%;
+}
+#single_posts{
+    border: 5px solid rgb(246, 178, 255);
+    box-shadow: 4px 4px 10px rgb(239, 119, 250);
+    padding: 40px 50px;
+}
+.pb-cmnt-container {
+    font-family: Lato;
+    margin-top: 100px;
+}
+.pb-cmnt-textarea {
+    resize: none;
+    padding: 20px;
+    height: 110px;
+    width: 100%;
+    border: 1px solid #F2F2F2;
+}
+#find_people{
+    border: 5px solid rgb(246, 178, 255);
+    box-shadow: 4px 4px 10px rgb(239, 119, 250);
+    padding: 40px 50px;
+}
+#result_posts{
+    border: 5px solid rgb(246, 178, 255);
+    box-shadow: 4px 4px 10px rgb(239, 119, 250);
+    padding: 40px 50px;
+}
+form.search_form::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+#content{
+    width: 70%;
+}
