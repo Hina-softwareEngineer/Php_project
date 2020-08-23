@@ -1,0 +1,18 @@
+.pagination a{
+    text-decoration: none;
+    font-size: 18px;
+    box-shadow: 4px 4px 10px rgb(44, 20, 66) ;
+    background-color: #190030;
+    color: white;
+    padding: 10px 19px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 50%; 
+}
+.pagination {
+    width: 100%;
+}
+.page {
+    width: fit-content;
+    margin: auto;
+}

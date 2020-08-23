@@ -15,7 +15,7 @@ if (!isset($_SESSION['user_email'])) {
 <html>
 <head>
 	<title>Edit Post</title>
-	meta charset="utf-8">
+	<meta charset="utf-8">
 	<meta name="viewport" contents="width=device-width initial-scaled=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.mon.js"?></script>
@@ -66,4 +66,5 @@ if (!isset($_SESSION['user_email'])) {
 	</div>
 </body>
 </html>
+
 <!--Laviza Falak Naz>

@@ -94,7 +94,7 @@ if (isset($_POST['login_user'])) {
       $_SESSION['user_email'] = $email;
       $_SESSION['username'] = $row['f_name'] . ' ' . $row['l_name'];
       $_SESSION['success'] = "You are now logged in";
-      header('location: ../includes/index.php');
+      header('location: ../users/home.php');
     } else {
       array_push($errors, "Wrong email/password combination");
     }

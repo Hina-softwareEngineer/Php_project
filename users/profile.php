@@ -13,6 +13,16 @@ if (!isset($_SESSION['user_email'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="../styles/header.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="../styles/profile.css" type="text/css" media="all" />
+
     <?php
     $con = mysqli_connect("friendscorner-mysqldbserver.mysql.database.azure.com", "hina@friendscorner-mysqldbserver", "Nedhas1webapp", "social_network");
     $user = $_SESSION['user_email'];
@@ -25,63 +35,43 @@ if (!isset($_SESSION['user_email'])) {
     ?>
 
     <title><?php echo "$user_name"; ?></title>
-    <!-- <Vazeema> -->
-    <style>
-        #own_posts {
-            border: 5px solid #e6e6e6;
-            padding: 40px 50px;
-        }
 
-        #post_img {
-            height: 300px;
-            width: 100%;
-        }
-    </style>
-    <!-- </Vazeema> -->
 </head>
 
 <body>
-    <div>
-        <div>
-
+    <div class="row">
+        <div class="col-sm-2">
         </div>
-        <div>
+        <div class="col-sm-8">
             <?php
             echo "
                     <div>
-                        <div><img id='cover-img' src='cover/$user_cover' alt='cover'></div>
+                        <div><img id='cover-img' class='img-rounded' src='cover/$user_cover' alt='cover'></div>
                         
                         <form action='profile.php?u_id=$user_id' method='post' enctype='multipart/form-data' >
-                            <ul style='position : absolute; top:10px; left:100px;'>
-                                <li>
-                                    <button>
-                                    Change Cover
-                                    </button>
+                            <div class='nav pull-left' style='position : absolute; top:10px; left:100px;'>
+                                
+                                    <label style='color: black; font-weight: bold;'>Select Cover Image
+                                        <input type='file' name='u_cover' id='cover' class='inputfile' size='60' />
+                                       
+                                    </label><br><br>
+                                    <button style='color: black; font-weight: bold;' for='cover' name='submit'>Set Cover Pic</button>
                                     <div>
-                                        <center>
-                                            <p>Click <strong>Select Cover</strong> and then click the 
-                                            <br> <strong>Update Cover</strong></p>
-                                            <label>Select Cover Image
-                                            <input type='file' name='u_cover' size='60' />
-
-                                            </label><br><br>
-                                            <button name='submit'>Update Cover</button>
-                                        </center>
                                     </div>
-                                </li>
-                            </ul>
+                                
+                            </div>
                         </form>
                     </div>
 
-                    <div>
-                        <img src='images/$user_image' alt='Profile' width='180px' height='185px' >
+                    <div id='profile_img'>
+                        <img src='images/$user_image' alt='Profile' width='180px' min-height='185px' >
                         <form action='profile.php?u_id='$user_id' method='post' enctype='multipart/form-data' >
 
-                            <label>Select Profile
-                            <input type='file' name='u_image' size='60' />
+                            <label style='color: black; font-weight: bold;' id='update_profile'> Select Profile
+                                <input type='file' name='u_image' id='profile' class='inputfile' size='60' />
+                               
                             </label><br><br>
-
-                            <button name='update'>Update Profile</button>
+                            <button style='color: black; font-weight: bold;' for='profile' id='button_profile' name='update'>Set Profile Pic</button>
 
                         </form>
                     </div><br>
@@ -149,27 +139,27 @@ if (!isset($_SESSION['user_email'])) {
         }
         ?>
 
-        <div>
+        <div class="col-sm-2">
 
         </div>
 
     </div>
 
-    <div>
-        <div>
+    <div class="row">
+        <div class="col-sm-2">
         </div>
 
-        <div>
+        <div class="col-sm-2" id="sidebar" style="background-color: #f6b2ff; color:#190030; text-align: center; left:0.8%; border-radius: 5px;">
             <?php
             echo "
-                <center><h2><strong></strong></h2></center>
-                <center><h4><strong>$first_name $last_name</strong></h4></center>
-                <p><strong><i>$describe_user</i></strong></p>
-                <p><strong>Relationship Status: </strong> $Relationship_status</p>
-                <p><strong>Lives In : </strong> $user_country</p>
-                <p><strong>Member Since: </strong> $register_date</p>
-                <p><strong>Gender: </strong> $user_gender</p>
-                <p><strong>Date Of Birth: </strong> $user_birthday</p>
+                <center><h2><strong>About</strong></h2></center><br>
+                <center><h3><strong>$first_name $last_name</strong></h3></center><br>
+                <p><strong><i style='color:grey;'>$describe_user</i></strong></p><br>
+                <p><strong>Relationship Status: </strong> $Relationship_status</p><br>
+                <p><strong>Lives In : </strong> $user_country</p><br>
+                <p><strong>Member Since: </strong> $register_date</p><br>
+                <p><strong>Gender: </strong> $user_gender</p><br>
+                <p><strong>Date Of Birth: </strong> $user_birthday</p><br>
                 ";
             ?>
         </div>
@@ -209,11 +199,11 @@ if (!isset($_SESSION['user_email'])) {
                     <div id='own_posts'>
                         <div class='row'>
                             <div class='col-sm-2'>
-                                <p><img src='images/$user_image' class='img-circle' width='100px' height='100px'></p>
+                                <p><img src='images/$user_image' class='img-circle' width='100px' min-height='100px'></p>
                             </div>
                             <div class='col-sm-6'>
-                                <h3><a style='text-decoration:none; cursor:pointer; color:#3897f0;' href='user_profile.php?u_id=$user_id'>$user_name</h3>
-                                <h4><small style='color:black;'>Updated a post on <strong>$post_date</strong></small></h4>
+                                <h3><a style='text-decoration:none; cursor:pointer; color:rgb(44, 20, 66);' href='user_profile.php?u_id=$user_id'>$user_name</h3>
+                                <h4><small style='color:white; font-size:16px;'>Updated a post on <strong>$post_date</strong></small></h4>
                             </div>
                             <div class='col-sm-4'>
                             </div>
@@ -235,8 +225,8 @@ if (!isset($_SESSION['user_email'])) {
                                 <p><img src='images/$user_image' class='img-circle' width='100px' height='100px'></p>
                             </div>
                             <div class='col-sm-6'>
-                                <h3><a style='text-decoration:none; cursor:pointer; color:#3897f0;' href='user_profile.php?u_id=$user_id'>$user_name</h3>
-                                <h4><small style='color:black;'>Updated a post on <strong>$post_date</strong></small></h4>
+                                <h3><a style='text-decoration:none; cursor:pointer; color:rgb(44, 20, 66);' href='user_profile.php?u_id=$user_id'>$user_name</h3>
+                                <h4><small style='color:white; font-size:16px;'>Updated a post on <strong>$post_date</strong></small></h4>
                             </div>
                             <div class='col-sm-4'>
                             </div>
@@ -256,11 +246,11 @@ if (!isset($_SESSION['user_email'])) {
                     <div id='own_posts'>
                         <div class='row'>
                             <div class='col-sm-2'>
-                                <p><img src='images/$user_image' class='img-circle' width='100px' height='100px'></p>
+                                <p><img src='images/$user_image' class='img-circle' width='100px' min-height='100px'></p>
                             </div>
                             <div class='col-sm-6'>
-                                <h3><a style='text-decoration:none; cursor:pointer; color:#3897f0;' href='user_profile.php?u_id=$user_id'>$user_name</h3>
-                                <h4><small style='color:black;'>Updated a post on <strong>$post_date</strong></small></h4>
+                                <h3><a style='text-decoration:none; cursor:pointer; color:rgb(44, 20, 66);' href='user_profile.php?u_id=$user_id'>$user_name</h3>
+                                <h4><small style='color:white; font-size:16px;'>Updated a post on <strong>$post_date</strong></small></h4>
                             </div>
                             <div class='col-sm-4'>
                             </div>
@@ -314,6 +304,7 @@ if (!isset($_SESSION['user_email'])) {
             ?>
         </div>
         <div class='col-sm-2'>
+
         </div>
         <!-- </Vazeema> -->
     </div>

@@ -5,19 +5,23 @@ include('../functions/functions.php');
 
 ?>
 
-<nav>
-    <div>
-        <div>
-            <button>
-                <span>Toggle Navigation</span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <a href="home.php">Friends Corner</a>
+<nav class="navbar navbar-default navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+          </button>
+                <!-- <a class="navbar-brand" href="home.php"><img class="logo" src="../images/logo.png"><h2 class="logo_text">Friends Corner</h2></a> -->
+                <a class="navbar-brand" href="home.php">
+                    <span><img class="logo" src="../images/logo.png" class="d-inline-block align-top" ></span>
+                    <p class="logo_text">Friends<br>&nbsp   Corner</p>
+                </a>
         </div>
-        <div>
-            <ul>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
                 <?php
                 $user = $_SESSION['user_email'];
                 $get_user = "select * from users where user_email='$user'";
@@ -46,19 +50,15 @@ include('../functions/functions.php');
                 $posts = mysqli_num_rows(($run_posts));
                 ?>
                 <li><a href='profile.php?<?php echo "u_id=$user_id" ?>'>
-                        <?php echo "$first_name"; ?>Profile</a></li>
+                        <?php echo "$first_name"; ?>'s Profile</a></li>
                 <li><a href="home.php">Home</a></li>
                 <li><a href="members.php">Find People</a></li>
                 <li><a href="messages.php?u_id=new">Messages</a></li>
                 <?php
                 echo "
-            <li><a href='#'>
-            <span>Down</span></a>
-            <ul>
-                <li>
-                    <a href='#'><span><i class='glyphicon glyphicon-chevron-down'></i></span></a>
-                </li>
-
+            <li class='dropdown'>
+                <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'><span><i class='glyphicon glyphicon-chevron-down'></i></span></a>
+                <ul class='dropdown-menu'>
                 <li>
                     <a href='my_post.php?u_id=$user_id'>My Posts
                     <span>$posts</span></a>
@@ -69,7 +69,7 @@ include('../functions/functions.php');
                     </a>
                 </li>
 
-                <li role='separator'>Separator</li>
+                <li role='separator' class='divider'></li>
 
                 <li>
                     <a href='logout.php'>Logout
@@ -77,18 +77,19 @@ include('../functions/functions.php');
                 </li>
             </ul>
             </li>
+            </ul>
             ";
                 ?>
 
-            </ul>
+            
 
-            <ul>
-                <li>
-                    <form action="results.php">
-                        <div>
-                            <input type="text" name="user_query" placeholder="Search">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <form class="navbar-form navbar-left" method="get" action="results.php">
+                        <div class="form-group">
+                            <input type="text" class="form-control mr-sm-2" name="user_query" placeholder="Search">
                         </div>
-                        <button type="submit" name="search">Search</button>
+                        <button type="submit" class="btn btn-info" id="search-btn" name="search"><i class="fas fa-search" aria-hidden="true"></i></button>
                     </form>
                 </li>
             </ul>
