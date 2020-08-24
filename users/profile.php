@@ -46,16 +46,16 @@ if (!isset($_SESSION['user_email'])) {
             <?php
             echo "
                     <div>
-                        <div><img id='cover-img' class='img-rounded' src='cover/$user_cover' alt='cover'></div>
+                        <div><img id='cover-img' class='img-rounded' src='cover/$user_cover' alt='cover' min-height:'100px'></div>
                         
                         <form action='profile.php?u_id=$user_id' method='post' enctype='multipart/form-data' >
-                            <div class='nav pull-left' style='position : absolute; top:10px; left:100px;'>
+                            <div>
                                 
-                                    <label style='color: black; font-weight: bold;'>Select Cover Image
+                                    <label>
                                         <input type='file' name='u_cover' id='cover' class='inputfile' size='60' />
-                                       
-                                    </label><br><br>
-                                    <button style='color: black; font-weight: bold;' for='cover' name='submit'>Set Cover Pic</button>
+                                        <label id='cover_label' for='cover'>Select Cover</label>
+                                    </label><br>
+                                    <button class='upd_btn' id='cover_btn' name='submit'>Update Cover</button>
                                     <div>
                                     </div>
                                 
@@ -64,18 +64,17 @@ if (!isset($_SESSION['user_email'])) {
                     </div>
 
                     <div id='profile_img'>
-                        <img src='images/$user_image' alt='Profile' width='180px' min-height='185px' >
+                        <img src='images/$user_image' alt='Profile' class='img-circle' width='180px'>
                         <form action='profile.php?u_id='$user_id' method='post' enctype='multipart/form-data' >
-
-                            <label style='color: black; font-weight: bold;' id='update_profile'> Select Profile
+                        <div id='update_profile'>
+                            <label>
                                 <input type='file' name='u_image' id='profile' class='inputfile' size='60' />
-                               
-                            </label><br><br>
-                            <button style='color: black; font-weight: bold;' for='profile' id='button_profile' name='update'>Set Profile Pic</button>
-
+                                <label id='profile_label' for='profile'>Select Profile</label>
+                            </label><br>
+                            <button class='profile_btn upd_btn' name='update'>Update Profile</button>
+                        </div>
                         </form>
                     </div><br>
-
                 ";
             ?>
 
