@@ -15,7 +15,7 @@ function insertPost()
         $content = htmlentities($_POST['content']);
         $upload_image = $_FILES['upload_image']['name'];
         $image_tmp = $_FILES['upload_image']['tmp_name'];
-        $random_number = rand(1, 100);
+
 
         if (strlen($content > 250)) {
             echo "<script>alert('Please Use 250 or less than 250 words!')</script>";
@@ -23,8 +23,8 @@ function insertPost()
         } else {
             if (strlen($upload_image) >= 1 && strlen($content) >= 1) {
 
-                if (move_uploaded_file($image_tmp, "../imagepost/$upload_image.$random_number")) {
-                    $insert = "insert into posts (user_id, post_content, upload_image, post_date) values('$user_id', '$content', '$upload_image.$random_number', NOW())";
+                if (move_uploaded_file($image_tmp, "../imagepost/$upload_image")) {
+                    $insert = "insert into posts (user_id, post_content, upload_image, post_date) values('$user_id', '$content', '$upload_image', NOW())";
 
                     $run = mysqli_query($con, $insert);
 
@@ -45,8 +45,8 @@ function insertPost()
                 } else {
                     if ($content == '') {
 
-                        if (move_uploaded_file($image_tmp, "../imagepost/$upload_image.$random_number")) {
-                            $insert = "insert into posts (user_id, post_content, upload_image, post_date) values('$user_id', 'No', '$upload_image.$random_number', NOW())";
+                        if (move_uploaded_file($image_tmp, "../imagepost/$upload_image")) {
+                            $insert = "insert into posts (user_id, post_content, upload_image, post_date) values('$user_id', 'No', '$upload_image', NOW())";
 
                             $run = mysqli_query($con, $insert);
 
@@ -105,8 +105,7 @@ function get_posts()
     $get_posts = "select * from posts ORDER by 1 DESC LIMIT $start_from, $per_page";
     $run_posts = mysqli_query($con, $get_posts);
 
-    while ($row_posts = mysqli_fetch_array($run_posts)) 
-    {
+    while ($row_posts = mysqli_fetch_array($run_posts)) {
         $post_id = $row_posts['post_id'];
         $user_id = $row_posts['user_id'];
         $content = substr($row_posts['post_content'], 0, 40);
@@ -122,8 +121,8 @@ function get_posts()
 
         //displaying posts from database 
 
-                if ($content == "No" && strlen($upload_image) >= 1) {
-                    echo "
+        if ($content == "No" && strlen($upload_image) >= 1) {
+            echo "
                     <div class='row'>
                         <div class='col-sm-3'>
                         </div>
@@ -156,8 +155,8 @@ function get_posts()
                         </div>
         			</div><br><br>
                     ";
-                } else if (strlen($content) >= 1 && strlen($upload_image) >= 1) {
-                    echo "
+        } else if (strlen($content) >= 1 && strlen($upload_image) >= 1) {
+            echo "
                     <div class='row'>
                         <div class='col-sm-3'>
                         </div>
@@ -186,8 +185,8 @@ function get_posts()
                         </div>
         			</div><br><br>
                     ";
-                } else {
-                    echo "
+        } else {
+            echo "
                     <div class='row'>
                         <div class='col-sm-3'>
                         </div>
@@ -215,9 +214,9 @@ function get_posts()
                         </div>
         			</div><br><br>
                     ";
-                }
-                    include("../functions/pagination.php");
-            } 
+        }
+        include("../functions/pagination.php");
+    }
 }
 // </Vazeema>
 
@@ -229,8 +228,7 @@ function get_posts()
 function single_post()
 {
 
-    if(isset($_DET['post_id']))
-    {
+    if (isset($_DET['post_id'])) {
         global $con;
 
         $get_id = $_GET['post_id'];
@@ -252,7 +250,7 @@ function single_post()
         $run_user = mysqli_query($con, $user);
         $row_user = mysqli_fetch_array($run_user);
 
-        $user_name= $row_user['user_name'];
+        $user_name = $row_user['user_name'];
         $user_image = $row_user['user_image'];
 
         $user_com = $_SESSION['user_email'];
@@ -265,33 +263,28 @@ function single_post()
         $user_com_id = $row_com['$user_id'];
         $user_com_name = $row_com['$user_name'];
 
-        if(isset($_GET['post_id']))
-        {
+        if (isset($_GET['post_id'])) {
             $post_id = $_GET['post_id'];
         }
 
         $get_posts = "select post_id from users where post_id = '$post_id'";
         $run_user = mysqli_query($con, $get_posts);
 
-        $post_id= $_GET['post_id'];
+        $post_id = $_GET['post_id'];
 
         $post = $_GET['post_id'];
         $get_user = "select * from posts where post_id'$post_id'";
         $run_user = mysqli_query($con, $get_user);
         $row = mysqli_fetch_array($run_user);
-        
+
         $p_id = $row['post_id'];
 
-        if ($p_id != $post_id)
-        {
+        if ($p_id != $post_id) {
             echo "<script>alert('ERROR')</script>";
             echo "<script>window.open('home.php', 'self')</script>";
-        }
-        else
-        {
-            if ($content == "No" && strlen($upload_image) >= 1) 
-            {
-             echo "
+        } else {
+            if ($content == "No" && strlen($upload_image) >= 1) {
+                echo "
                 <div class='row'>
                     <div class='col-sm-3'>
                     </div>
@@ -319,9 +312,7 @@ function single_post()
                     </div>
                 </div><br><br>
                 ";
-            } 
-            else if (strlen($content) >= 1 && strlen($upload_image) >= 1) 
-            {
+            } else if (strlen($content) >= 1 && strlen($upload_image) >= 1) {
                 echo "
                 <div class='row'>
                     <div class='col-sm-3'>
@@ -351,9 +342,7 @@ function single_post()
                     </div>
                 </div><br><br>
                 ";
-            } 
-            else 
-            {
+            } else {
                 echo "
                 <div class='row'>
                     <div class='col-sm-3'>
@@ -382,11 +371,11 @@ function single_post()
                     </div>
                 </div><br><br>
                 ";
-            } 
-           // ELSE CONDITION ENDING 
+            }
+            // ELSE CONDITION ENDING 
 
-            include ("comments.php");
-           echo "
+            include("comments.php");
+            echo "
                 <div class='row'>
                     <div class='col-md-6 col md-offset-3'>
                         <div class='panel panel-info'>
@@ -404,26 +393,23 @@ function single_post()
                 </div>
            ";
 
-           if(isset($_POST['reply']))
-           {
-               $comment = htmlentities($_POST['comment']);
+            if (isset($_POST['reply'])) {
+                $comment = htmlentities($_POST['comment']);
 
-               if($comment == "")
-               {
-                   echo "<script>alert('Empty comment. please enter something!')</script>";echo "<script>window.open('single.php?post_id=$post_id', '_self')
+                if ($comment == "") {
+                    echo "<script>alert('Empty comment. please enter something!')</script>";
+                    echo "<script>window.open('single.php?post_id=$post_id', '_self')
                    </script>";
+                } else {
+                    $insert = "insert into comments(post_id, user_id, comment, comment_author, date) values('$post_id','$user_id','$comment','$user_com_name',NOW())";
 
-               }
-               else
-               {
-                   $insert = "insert into comments(post_id, user_id, comment, comment_author, date) values('$post_id','$user_id','$comment','$user_com_name',NOW())";
+                    $run = mysqli_query($con, $insert);
 
-                   $run = mysqli_query($con,$insert);
-
-                   echo "<script>alert('Commented!')</script>";echo "<script>window.open('single.php?post_id=$post_id', '_self')
+                    echo "<script>alert('Commented!')</script>";
+                    echo "<script>window.open('single.php?post_id=$post_id', '_self')
                    </script>";
-               }
-           }
+                }
+            }
         }
     }
 }
@@ -432,20 +418,16 @@ function search_user()
 {
     global $con;
 
-    if(isset($_GET['search_user_btn']))
-    {
+    if (isset($_GET['search_user_btn'])) {
         $search_query = htmlentities($_GET['search-user']);
         $get_user = "select * from users where f_name like '%$search_query%' OR l_name like '%$search_query%' OR user_name like '%$search_query%'";
-    }
-    else
-    {
+    } else {
         $get_user = "select * from users";
     }
 
     $run_user = mysqli_query($con, $get_user);
 
-    while ($row_user = mysqli_fetch_array ($run_user))
-    {
+    while ($row_user = mysqli_fetch_array($run_user)) {
         $user_id = $row_user['user_id'];
         $f_name = $row_user['f_name'];
         $l_name = $row_user['l_name'];

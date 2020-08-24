@@ -84,7 +84,6 @@ if (!isset($_SESSION['user_email'])) {
                 $u_cover = $_FILES['u_cover']['name'];
                 $image_tmp = $_FILES['u_cover']['tmp_name'];
 
-                $random_number = rand(1, 100);
 
                 if ($u_cover == '') {
                     echo "<script>alert('Please select Cover Image')</script>";
@@ -92,10 +91,10 @@ if (!isset($_SESSION['user_email'])) {
 
                     exit();
                 } else {
-                    $file_destination =  'cover/' . $u_cover . $random_number;
+                    $file_destination =  'cover/' . $u_cover;
                     if (move_uploaded_file($image_tmp, $file_destination)) {
 
-                        $update = "update users set user_cover = '$u_cover$random_number' where user_id='$user_id'";
+                        $update = "update users set user_cover = '$u_cover' where user_id='$user_id'";
                         $run = mysqli_query($con, $update);
 
                         if ($run) {
@@ -114,7 +113,7 @@ if (!isset($_SESSION['user_email'])) {
         if (isset($_POST['update'])) {
             $u_image = $_FILES['u_image']['name'];
             $image_tmp = $_FILES['u_image']['tmp_name'];
-            $random_number = rand(1, 100);
+
 
             if ($u_image == '') {
                 echo "<script>alert('Please select Profile Image on clicking on your Profile Image')</script>";
@@ -122,9 +121,9 @@ if (!isset($_SESSION['user_email'])) {
 
                 exit();
             } else {
-                $file_destination =  'images/' . $u_image . $random_number;
+                $file_destination =  'images/' . $u_image;
                 if (move_uploaded_file($image_tmp, $file_destination)) {
-                    $update = "update users set user_image = '$u_image$random_number' where user_id='$user_id'";
+                    $update = "update users set user_image = '$u_image' where user_id='$user_id'";
 
                     $run = mysqli_query($con, $update);
 
